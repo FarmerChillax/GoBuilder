@@ -1,0 +1,4 @@
+{
+    "platform": ["darwin/amd64", "darwin/arm64","linux/amd64", "linux/arm", "linux/arm64", "linux/mips64", "linux/mips64le", "linux/riscv64", "linux/amd64", "linux/arm64"],
+    "source_path": "./"
+}
