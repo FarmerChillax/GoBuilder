@@ -27,8 +27,6 @@ func BuildProject(ctx context.Context, fileName, platform, sourcePath string) {
 		return
 	}
 	targetOS, targetArch := platformInfo[0], platformInfo[1]
-	// env CGO_ENABLED=0 GOOS=$${os} GOARCH=$${arch} GOMIPS=$${gomips}
-	// go build -trimpath -ldflags "$(LDFLAGS)" -tags "${BUILD_TAGS}" -o ./bin/$${os}/$${arch}/voyager-nacs ./cmd/voyager-nacs/*.go;\
 	outputPaht := fmt.Sprintf("./bin/%s/%s/%s", targetOS, targetArch, fileName)
 	command := exec.CommandContext(ctx, "go", "build", "-o", outputPaht, "-v", "-ldflags", "-s -w", "-trimpath", sourcePath)
 	command.Env = append(os.Environ(), fmt.Sprintf("CGO_ENABLED=0"), fmt.Sprintf("GOOS=%s", targetOS), fmt.Sprintf("GOARCH=%s", targetArch))

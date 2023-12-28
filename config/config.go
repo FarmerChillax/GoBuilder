@@ -9,7 +9,11 @@ type Config struct {
 
 var config *Config
 
-func LoadConfig() (config *Config, err error) {
+func Get() *Config {
+	return config
+}
+
+func LoadConfig() (*Config, error) {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yaml")
 	viper.SetConfigType("json")
